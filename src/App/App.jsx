@@ -14,6 +14,9 @@ import Container from 'components/Container';
 import Section from 'components/Section/Section';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
+//*         redux        //
+// import { useDispatch } from 'react-redux';
+ // const dispatch = useDispatch();
 
 //*      Root      //
 export default function App() {
@@ -76,6 +79,7 @@ useEffect(() => {
     // *  прописываем  внутри инпута   //
   const handleChange = evt => {
     setFilter(evt.currentTarget.value);
+    // dispatch(filter(evt.currentTarget.value));
   };
 
   

@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeContact } from 'redux/items/contactsSlice';
 
-export default function ContactList({ contacts, onDeleteContactItem }) {
+export default function ContactList({ contacts }) {
+  const dispatch = useDispatch();
   return (
     <ul>
-      {contacts.map(elt => {
+      {contacts.map(({ id, name, number }) => {
         return (
-          <li key={elt.id} className="listContacts">
+          <li key={id} className="listContacts">
             <span className="contact">
-              {elt.name}: {elt.number}
+              {name}: {number}
             </span>
             <button
               className="listButton"
               type="button"
-              id={elt.id}
-              onClick={() => onDeleteContactItem(elt.id)}
+              id={id}
+              onClick={() => dispatch(removeContact(id))}
             >
               x
             </button>

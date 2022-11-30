@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { useDispatch } from 'react-redux';
 
 export default function Filter({ value, onChange }) {
+  // const dispatch = useDispatch();
+
   return (
     <form>
       <div className="inputBox">
