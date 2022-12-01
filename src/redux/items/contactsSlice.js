@@ -6,13 +6,23 @@ export const contactsSlice = createSlice({
     contacts: [],
   },
   reducers: {
-    addContact(state, action) {
-      return { ...state, contacts: [...state, action.payload] };
+    addSliceContact(state, action) {
+      state.contacts.push(action.payload);
     },
     removeContact(state, action) {
-      return { ...state, contacts: [...state, action.payload] };
+      const deleteContactItem = state.contacts.filter(
+        contact => contact.id !== action.payload
+      );
+
+      state.contacts = deleteContactItem;
     },
   },
 });
 
-export const { addContact, removeContact } = contactsSlice.actions;
+export const { addSliceContact, removeContact } = contactsSlice.actions;
+export default contactsSlice.reducer;
+//*  удаляем контакт из  списка  фильтра   //
+// const deleteContactItem = contactId => {
+//  state.contacts.filter(contact => contact.id !== action.payload)
+//
+// };
