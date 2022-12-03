@@ -37,12 +37,6 @@ export const store = configureStore({
   },
 });
 export const persistor = persistStore(store);
-export const filterValue = state => state.filter.filter;
-export const contactValue = state => state.phonebook.contacts;
 
-// export default contactsSlice.reducer;
-// export default () => {
-//   let store = createStore(persistedReducer);
-//   let persistor = persistStore(store);
-//   return { store, persistor };
-// };
+export const contactValue = state => state.phonebook.contacts;
+export const filterValue = state => state.filter.filter;
