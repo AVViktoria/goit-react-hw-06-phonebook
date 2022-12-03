@@ -26,7 +26,7 @@ const persistedContacts = persistReducer(persistConfig, contactsSlice.reducer);
 export const store = configureStore({
   reducer: {
     filter: filterSlice.reducer,
-    items: persistedContacts,
+    phonebook: persistedContacts,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
@@ -37,8 +37,8 @@ export const store = configureStore({
   },
 });
 export const persistor = persistStore(store);
-export const filterValue = state => state.filter;
-export const contactValue = state => state.items.contacts;
+export const filterValue = state => state.filter.filter;
+export const contactValue = state => state.phonebook.contacts;
 
 // export default contactsSlice.reducer;
 // export default () => {

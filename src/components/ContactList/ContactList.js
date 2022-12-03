@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeContact } from 'redux/items/contactsSlice';
+import { removeSliceContact } from 'redux/items/contactsSlice';
 
 export default function ContactList({ contacts }) {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function ContactList({ contacts }) {
               className="listButton"
               type="button"
               id={id}
-              onClick={() => dispatch(removeContact(id))}
+              onClick={() => dispatch(removeSliceContact(id))}
             >
               x
             </button>

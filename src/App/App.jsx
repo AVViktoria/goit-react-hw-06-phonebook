@@ -28,8 +28,9 @@ export default function App() {
 //   { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
 // ];
  const dispatch = useDispatch();
-const contacts = useSelector(contactValue);
+  const contacts = useSelector(contactValue);
   const filter = useSelector(filterValue);
+  console.log(filter )
 //   const [contacts, setContacts] = useLocalStorage("contacts", initPhoneBook);
 //   const [filter, setFilter] = useState('');
 
@@ -73,12 +74,12 @@ const contacts = useSelector(contactValue);
       contact.name.toLowerCase().includes(normalizedFilter),
     );
   }
-  
+
   //* one more time
 // const getVisibleContacts =  contacts.filter(contact =>
 //     contact.name.toLowerCase().includes(filter.toLowerCase())
 //   );
-   //* two more time
+  // * two more time
   // const getVisibleContacts = () => {
   //   const checkByName = contacts.find(contact =>
   //     contact.name.toLowerCase().includes(filter.toLowerCase()))
@@ -97,7 +98,7 @@ const contacts = useSelector(contactValue);
   };
 
   
-    const visibleContacts =  getVisibleContacts();
+    // const visibleContacts =  getVisibleContacts();
     return (
       <>
         <Section >
@@ -110,7 +111,7 @@ const contacts = useSelector(contactValue);
         <Filter value={filter}
             onChange={handleChange}/>
           <ContactList
-            contacts={visibleContacts}
+            // contacts={visibleContacts}
             onDeleteContactItem={getVisibleContacts}
           />
           </Container>
