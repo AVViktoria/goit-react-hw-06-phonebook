@@ -37,6 +37,6 @@ export const store = configureStore({
   },
 });
 export const persistor = persistStore(store);
-
+// export const filterValue = state => state.filter.filter;
+export const filterValue = state => state.filter.contacts.filter;
 export const contactValue = state => state.phonebook.contacts;
-export const filterValue = state => state.filter.filter;

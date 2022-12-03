@@ -98,7 +98,7 @@ export default function App() {
   };
 
   
-    // const visibleContacts =  getVisibleContacts();
+    const visibleContacts =  getVisibleContacts();
     return (
       <>
         <Section >
@@ -111,7 +111,7 @@ export default function App() {
         <Filter value={filter}
             onChange={handleChange}/>
           <ContactList
-            // contacts={visibleContacts}
+            contacts={visibleContacts}
             onDeleteContactItem={getVisibleContacts}
           />
           </Container>
