@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // console.log(inputState);
 
   //   //*  прописываем  внутри инпута   //
   const handleChange = evt => {

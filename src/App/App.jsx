@@ -18,8 +18,6 @@ import { addSliceContact } from 'redux/items/contactsSlice';
 export default function App() {
   const contacts = useSelector(state => state.phonebook.contacts);
   const filter = useSelector(state => state.filter.filter);
-  console.log(contacts);
-  console.log(filter);
   const dispatch = useDispatch();
 
   //*  берем  данные по сабмиту  кнопки  //
@@ -55,7 +53,6 @@ export default function App() {
   // *  прописываем  внутри инпута   //
   const handleChange = evt => {
     addContact(evt.currentTarget.value);
-    // dispatch(filter(evt.currentTarget.value));
   };
 
   const visibleContacts = getVisibleContacts();
@@ -78,23 +75,3 @@ export default function App() {
     </>
   );
 }
-
-// const getVisibleContacts = contacts.filter(contact =>{
-//   return contact.name.toLowerCase().includes(filter.toLowerCase())
-// }
-//   );
-
-//* one more time
-// const getVisibleContacts =  contacts.filter(contact =>
-//     contact.name.toLowerCase().includes(filter.toLowerCase())
-//   );
-// * two more time
-// const getVisibleContacts = () => {
-//   const checkByName = contacts.find(contact =>
-//     contact.name.toLowerCase().includes(filter.toLowerCase()))
-//   if (checkByName) {
-//     alert(`Is already in contacts`);
-//   } else {
-//     return checkByName;
-//   }
-// }

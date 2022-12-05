@@ -1,11 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initPhoneBook } from 'utils/initPhoneBook';
-// const initialState = {
-//   contacts: {
-//     items: [],
-//     // filter: '',
-//   },
-// };
+
 export const contactsSlice = createSlice({
   name: 'phonebook',
   initialState: {
