@@ -1,13 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeSliceContact } from 'redux/items/contactsSlice';
 
-export default function ContactList({ contacts }) {
+export default function ContactList() {
   const dispatch = useDispatch();
+  const filter = useSelector(state => state.filter.filter);
+  const contacts = useSelector(state => state.phonebook.contacts);
+  //*  фильтруем по имени  //
+  const getVisibleContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+  const visibleContacts = getVisibleContacts();
+  // contacts = { visibleContacts };
+  // onDeleteContactItem = { getVisibleContacts };
   return (
     <ul>
-      {contacts.map(({ id, name, number }) => {
+      {visibleContacts.map(({ id, name, number }) => {
         return (
           <li key={id} className="listContacts">
             <span className="contact">
@@ -36,5 +49,4 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  onDeleteContactItem: PropTypes.func.isRequired,
 };
