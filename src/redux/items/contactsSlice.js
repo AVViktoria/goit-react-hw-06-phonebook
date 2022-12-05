@@ -24,8 +24,3 @@ export const contactsSlice = createSlice({
 
 export const { addSliceContact, removeSliceContact } = contactsSlice.actions;
 export default contactsSlice.reducer;
-//*  удаляем контакт из  списка  фильтра   //
-// const deleteContactItem = contactId => {
-//  state.contacts.filter(contact => contact.id !== action.payload)
-//
-// };

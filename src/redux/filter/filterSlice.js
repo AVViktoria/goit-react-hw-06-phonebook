@@ -9,7 +9,7 @@ export const filterSlice = createSlice({
   initialState,
   reducers: {
     filterChanges(state, action) {
-      return (state.contacts.filter = action.payload);
+      return (state.contacts.filter = action.payload.toLowerCase());
     },
   },
 });

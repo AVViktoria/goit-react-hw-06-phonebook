@@ -18,6 +18,7 @@ import { addSliceContact } from 'redux/items/contactsSlice';
 import { filterValue, contactValue } from 'redux/store';
 
 
+
 //*      Root      //
 export default function App() {
 
@@ -30,7 +31,8 @@ export default function App() {
  const dispatch = useDispatch();
   const contacts = useSelector(contactValue);
   const filter = useSelector(filterValue);
-  console.log(filter )
+  console.log(contacts)
+    console.log(filter)
 //   const [contacts, setContacts] = useLocalStorage("contacts", initPhoneBook);
 //   const [filter, setFilter] = useState('');
 
@@ -39,7 +41,7 @@ export default function App() {
 //     localStorage.setItem('contacts', JSON.stringify(contacts));
 //   }, [contacts]);
 
- 
+  
 
   //*  удаляем контакт из  списка  фильтра   //
   // const deleteContactItem = contactId => {
@@ -67,13 +69,16 @@ export default function App() {
   }
 
  //*  фильтруем по имени  //
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
+  // const getVisibleContacts = () => {
+  //   const normalizedFilter = filter.toLowerCase();
     
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter),
-    );
-  }
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter),
+  //   );
+  // }
+const getVisibleContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter)
+  );
 
   //* one more time
 // const getVisibleContacts =  contacts.filter(contact =>
