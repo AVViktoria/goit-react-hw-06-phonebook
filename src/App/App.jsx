@@ -15,7 +15,7 @@ import Section from 'components/Section/Section';
 //*         Redux        //
 import { useDispatch, useSelector } from 'react-redux';
 import { addSliceContact } from 'redux/items/contactsSlice';
-import { filterValue, contactValue } from 'redux/store';
+// import { filterValue, contactValue } from 'redux/store';
 
 
 
@@ -28,27 +28,15 @@ export default function App() {
 //   { id: nanoid(), name: 'Eden Clements', number: '645-17-79' },
 //   { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
 // ];
- const dispatch = useDispatch();
-  const contacts = useSelector(contactValue);
-  const filter = useSelector(filterValue);
+ 
+  
+  const contacts = useSelector(state => state.phonebook.contacts);
+  const filter = useSelector(state => state.filter.filter);
   console.log(contacts)
     console.log(filter)
-//   const [contacts, setContacts] = useLocalStorage("contacts", initPhoneBook);
-//   const [filter, setFilter] = useState('');
-
-
-// useEffect(() => {
-//     localStorage.setItem('contacts', JSON.stringify(contacts));
-//   }, [contacts]);
+ const dispatch = useDispatch();
 
   
-
-  //*  удаляем контакт из  списка  фильтра   //
-  // const deleteContactItem = contactId => {
-  //   setContacts(contacts.filter(contact => contact.id !== contactId),
-  //   );
-  // };
-
   //*  берем  данные по сабмиту  кнопки  //
   const addContact= (name, number ) => {
     // const normalizedFilter = name.toLowerCase();
@@ -69,16 +57,17 @@ export default function App() {
   }
 
  //*  фильтруем по имени  //
-  // const getVisibleContacts = () => {
-  //   const normalizedFilter = filter.toLowerCase();
+  const getVisibleContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
     
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter),
-  //   );
-  // }
-const getVisibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter)
-  );
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
+    );
+  }
+// const getVisibleContacts = contacts.filter(contact =>{
+//   return contact.name.toLowerCase().includes(filter.toLowerCase())
+// }
+//   );
 
   //* one more time
 // const getVisibleContacts =  contacts.filter(contact =>
@@ -98,7 +87,7 @@ const getVisibleContacts = contacts.filter(contact =>
 
     // *  прописываем  внутри инпута   //
   const handleChange = evt => {
-    addContact(evt.currentTarget.value);
+    dispatch(addContact(evt.currentTarget.value));
     // dispatch(filter(evt.currentTarget.value));
   };
 
