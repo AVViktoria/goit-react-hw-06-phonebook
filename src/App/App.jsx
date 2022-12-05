@@ -39,9 +39,9 @@ export default function App() {
   
   //*  берем  данные по сабмиту  кнопки  //
   const addContact= ({name, number} ) => {
-    // const normalizedFilter = name.toLowerCase();
+    const normalizedFilter = name.toLowerCase();
     
-    const checkByName = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
+    const checkByName = contacts.find(contact => contact.name.toLowerCase() === normalizedFilter);
     if (checkByName) {
       alert(`${name} is already in contacts`);
     } else {
@@ -57,17 +57,17 @@ export default function App() {
   }
 
  //*  фильтруем по имени  //
-  // const getVisibleContacts = () => {
-  //   const normalizedFilter = filter.toLowerCase();
+  const getVisibleContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
     
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter),
-  //   );
-  // }
-const getVisibleContacts = contacts.filter(contact =>{
-  return contact.name.toLowerCase().includes(filter.toLowerCase())
-}
-  );
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
+    );
+  }
+// const getVisibleContacts = contacts.filter(contact =>{
+//   return contact.name.toLowerCase().includes(filter.toLowerCase())
+// }
+//   );
 
   //* one more time
 // const getVisibleContacts =  contacts.filter(contact =>
