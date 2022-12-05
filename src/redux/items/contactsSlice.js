@@ -20,10 +20,10 @@ export const contactsSlice = createSlice({
       //   task => task.id === action.payload
       // );
       // state.contacts.splice(index, 1);
-      const deleteContactItem = state.contacts.items.filter(
+      const deleteContactItem = state.contacts.filter(
         item => item.id !== action.payload
       );
-      state.contacts.items = deleteContactItem;
+      state.contacts = deleteContactItem;
     },
   },
 });

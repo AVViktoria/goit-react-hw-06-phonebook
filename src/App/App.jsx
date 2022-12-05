@@ -38,12 +38,12 @@ export default function App() {
 
   
   //*  берем  данные по сабмиту  кнопки  //
-  const addContact= (name, number ) => {
+  const addContact= ({name, number} ) => {
     // const normalizedFilter = name.toLowerCase();
     
-    const checkByName = contacts.find(contact => contact.name.toLowerCase() === name.name.toLowerCase());
+    const checkByName = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
     if (checkByName) {
-      alert(`${name.name} is already in contacts`);
+      alert(`${name} is already in contacts`);
     } else {
       const contact = {
         id: nanoid(),
@@ -57,17 +57,17 @@ export default function App() {
   }
 
  //*  фильтруем по имени  //
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
+  // const getVisibleContacts = () => {
+  //   const normalizedFilter = filter.toLowerCase();
     
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter),
-    );
-  }
-// const getVisibleContacts = contacts.filter(contact =>{
-//   return contact.name.toLowerCase().includes(filter.toLowerCase())
-// }
-//   );
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter),
+  //   );
+  // }
+const getVisibleContacts = contacts.filter(contact =>{
+  return contact.name.toLowerCase().includes(filter.toLowerCase())
+}
+  );
 
   //* one more time
 // const getVisibleContacts =  contacts.filter(contact =>
@@ -87,7 +87,7 @@ export default function App() {
 
     // *  прописываем  внутри инпута   //
   const handleChange = evt => {
-    dispatch(addContact(evt.currentTarget.value));
+    addContact(evt.currentTarget.value);
     // dispatch(filter(evt.currentTarget.value));
   };
 
