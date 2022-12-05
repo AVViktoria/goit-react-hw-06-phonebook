@@ -16,10 +16,6 @@ export const contactsSlice = createSlice({
       state.contacts.push(action.payload);
     },
     removeSliceContact(state, action) {
-      // const index = state.contacts.findIndex(
-      //   task => task.id === action.payload
-      // );
-      // state.contacts.splice(index, 1);
       const deleteContactItem = state.contacts.filter(
         item => item.id !== action.payload
       );
@@ -30,3 +26,8 @@ export const contactsSlice = createSlice({
 
 export const { addSliceContact, removeSliceContact } = contactsSlice.actions;
 export default contactsSlice.reducer;
+
+// const index = state.contacts.findIndex(
+//   task => task.id === action.payload
+// );
+// state.contacts.splice(index, 1);
