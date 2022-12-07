@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSliceContact } from 'redux/items/contactsSlice';
@@ -7,14 +7,21 @@ import { nanoid } from 'nanoid';
 
 export default function ContactForm() {
   const contacts = useSelector(state => state.phonebook.contacts);
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  //*  берем  данные по сабмиту  кнопки  //
-  const addContact = ({ name, number }) => {
-    const normalizedFilter = name.toLowerCase();
 
-    const checkByName = contacts.find(
-      contact => contact.name.toLowerCase() === normalizedFilter
+  //*  берем  данные по сабмиту  кнопки  //
+
+  const addContact = evt => {
+    evt.preventDefault();
+    // const name = evt.currentTarget.name.value;
+    // const number = evt.currentTarget.number.value;
+
+    const checkByName = contacts.some(
+      item => item.name.toLowerCase() === name.toLowerCase()
     );
+
     if (checkByName) {
       alert(`${name} is already in contacts`);
     } else {
@@ -26,42 +33,29 @@ export default function ContactForm() {
       };
 
       dispatch(addSliceContact(contact));
+      reset();
     }
   };
-  // *  прописываем  внутри инпута   //
-  const handleChange = evt => {
-    addContact(evt.currentTarget.value);
+  //*  очищаем   сбрасываем   форму  //
+  const reset = evt => {
+    setName('');
+    setNumber('');
+    // evt.target.name.value = '';
+    // evt.target.number.value = '';
   };
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
-
-  // //   //*  прописываем  внутри инпута   //
-  // const handleChange = evt => {
-  //   const { name, value } = evt.currentTarget;
-  //   switch (name) {
-  //     case 'name':
-  //       setName(value);
-  //       break;
-
-  //     case 'number':
-  //       setNumber(value);
-  //       break;
-  //     default:
-  //       return;
-  //   }
-  // };
-
-  // //   //*  слушатель событий по кнопке  //
-  // const handleSubmit = evt => {
-  //   evt.preventDefault();
-  //   onSubmit({ name, number });
-  //   reset();
-  // };
-  // //   //*  очищаем   сбрасываем   форму  //
-  // const reset = () => {
-  //   setName('');
-  //   setNumber('');
-  // };
+  // *  прописываем  внутри инпута   //
+  const handleChange = e => {
+    switch (e.currentTarget.name) {
+      case 'name':
+        setName(e.currentTarget.value);
+        break;
+      case 'number':
+        setNumber(e.currentTarget.value);
+        break;
+      default:
+        return;
+    }
+  };
 
   return (
     <form onSubmit={addContact}>
@@ -71,7 +65,7 @@ export default function ContactForm() {
           <input
             className="inputContent"
             type="text"
-            // value={name}
+            value={name}
             onChange={handleChange}
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -86,7 +80,7 @@ export default function ContactForm() {
           <input
             className="inputContent"
             type="tel"
-            // value={number}
+            value={number}
             onChange={handleChange}
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
