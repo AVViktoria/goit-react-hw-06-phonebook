@@ -16,8 +16,6 @@ export default function ContactList() {
     );
   };
   const visibleContacts = getVisibleContacts();
-  // contacts = { visibleContacts };
-  // onDeleteContactItem = { getVisibleContacts };
   return (
     <ul>
       {visibleContacts.map(({ id, name, number }) => {

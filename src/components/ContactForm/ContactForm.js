@@ -17,7 +17,6 @@ export default function ContactForm() {
     evt.preventDefault();
     // const name = evt.currentTarget.name.value;
     // const number = evt.currentTarget.number.value;
-
     const checkByName = contacts.some(
       item => item.name.toLowerCase() === name.toLowerCase()
     );
