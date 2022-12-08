@@ -40,7 +40,7 @@ export default contactsSlice.reducer;
 // import { ACTIONS } from './actions';
 
 // const initialState = {
-//   contacts: initPhoneBook,,
+//   contacts: initPhoneBook,
 // };
 
 // const contactsSlice = (state = initialState, action) => {
