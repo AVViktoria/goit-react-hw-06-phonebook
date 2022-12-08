@@ -95,5 +95,8 @@ export default function ContactForm() {
   );
 }
 ContactForm.prototype = {
-  onSubmit: PropTypes.func.isRequired,
+  addContact: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
 };

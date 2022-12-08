@@ -31,5 +31,5 @@ export default function Filter({ value }) {
 }
 Filter.prototype = {
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onValueChanges: PropTypes.func.isRequired,
 };
